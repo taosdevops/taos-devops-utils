@@ -6,6 +6,7 @@ setup(
     description="Utility Functions for the Taos Devops team",
     license=open("LICENSE").read(),
     long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
     packages=find_packages(exclude=["contrib", "docs", "tests"]),
     version="0.1.0",
     url="https://github.com/taosdevops/taos-devops-utils",
