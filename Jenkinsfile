@@ -21,7 +21,7 @@ pipeline {
           withEnv(["HOME=${env.WORKSPACE}"]) {
             sh 'python -m pip install --user --upgrade setuptools wheel twine'
             sh 'python setup.py sdist bdist_wheel'
-            sh 'python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/* --verbose -u __token__ -p $API_KEY'
+            sh 'python -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/* --verbose -u __token__ -p $API_KEY'
           }
         }
       }
