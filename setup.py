@@ -4,7 +4,7 @@ setup(
     author="TAOS DevopsNow",
     name="taosdevopsutils",
     description="Utility Functions for the Taos Devops team",
-    license=open("LICENSE").read(),
+    # license=open("LICENSE").read(),
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=["contrib", "docs", "tests"]),
@@ -25,7 +25,7 @@ setup(
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNUGPLv3 License",
+        "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
         "Operating System :: OS Independent",
     ],
 )
