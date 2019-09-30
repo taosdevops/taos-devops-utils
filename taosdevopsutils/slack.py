@@ -10,10 +10,16 @@ class Slack:
 
     def _handle_webhook(self, target: str, message: str):
         if isinstance(message, str):
-            return requests.post(
+            response = requests.post(
                 target, data=message, headers={"Content-Type": "application/json"}
             )
-        return requests.post(target, json=message)
+        else:
+            response = requests.post(target, json=message)
+        return {
+            "status_code": response.status_code,
+            "ok": response.status_code == 200,
+            "message": message,
+        }
 
     def _handle_direct_message(self, target: str, message: str):
         if isinstance(message, str):

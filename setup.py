@@ -8,7 +8,7 @@ setup(
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=["contrib", "docs", "tests"]),
-    version="1.0.0",
+    version="1.1.0",
     url="https://github.com/taosdevops/taos-devops-utils",
     install_requires=[
         "aiohttp==4.0.0a0",
