@@ -4,8 +4,7 @@ pipeline {
     stage('test') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh 'pip install pipenv'
-          sh 'pipenv install --dev'
+          sh 'pip install --user -r devrequirements.txt'
           sh 'pytest'
         }
       }
