@@ -21,7 +21,7 @@ pipeline {
       }
       steps{
         withCredentials([
-          file(credentialsId: 'devops-pypi-token', variable: 'API_KEY')
+          string(credentialsId: 'devops-pypi-token', variable: 'API_KEY')
         ]) {
           withEnv(["HOME=${env.WORKSPACE}"]) {
             sh 'python -m pip install --user --upgrade setuptools wheel twine'
