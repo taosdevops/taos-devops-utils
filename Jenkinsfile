@@ -9,6 +9,7 @@ pipeline {
     stage('test') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
+          sh 'pip install pipenv'
           sh 'pipenv install --dev'
           sh 'pipenv run pytest'
         }
