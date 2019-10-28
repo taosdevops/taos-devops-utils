@@ -8,7 +8,7 @@ setup(
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=["contrib", "docs", "tests"]),
-    version="1.1.0",
+    version="1.2.0",
     url="https://github.com/taosdevops/taos-devops-utils",
     install_requires=[
         "aiohttp==4.0.0a0",
@@ -22,7 +22,12 @@ setup(
         "slackclient==2.2.0",
         "urllib3==1.25.6",
         "yarl==1.3.0",
+        "Click==7.0",
     ],
+    entry_points="""
+        [console_scripts]
+        devops=taosdevopsutils.cli.main:main
+        """,
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",

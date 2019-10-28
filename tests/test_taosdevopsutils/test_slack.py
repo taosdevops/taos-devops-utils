@@ -20,3 +20,15 @@ class TestSlackClass:
         slack_client.post_slack_message("U123456", "SomeMessage")
         assert slack_mock.called
         assert not requests_mock.called
+
+    def test_slack_wraps_simple_strings_in_text_json(self, mocker):
+        message = "SomeMessage"
+        expected_payload = {"text": message}
+        requests_mock = mocker.patch.object(requests, "post")
+
+        slack_client = Slack()
+        slack_client.post_slack_message("https://slack/webhook/somehook", "SomeMessage")
+
+        requests_mock.assert_called_with(
+            "https://slack/webhook/somehook", json=expected_payload
+        )

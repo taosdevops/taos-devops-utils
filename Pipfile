@@ -13,10 +13,12 @@ pytest-random-order = "*"
 pytest-sugar = "*"
 pytest-xdist = "*"
 pytest-mock = "*"
+pycodestyle = "*"
 
 [packages]
 requests = "*"
 slackclient = "*"
+click = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,7 +1,9 @@
+""" Module to handle slack messaging """
 import slack
 import os
 from taosdevopsutils import config
 import requests
+import json
 
 
 class Slack:
@@ -13,12 +15,19 @@ class Slack:
             response = requests.post(
                 target, data=message, headers={"Content-Type": "application/json"}
             )
+            try:
+                payload = json.loads(message)
+            except json.JSONDecodeError:
+                payload = {"text": message}
         else:
-            response = requests.post(target, json=message)
+            payload = message
+
+        response = requests.post(target, json=payload)
         return {
             "status_code": response.status_code,
             "ok": response.status_code == 200,
             "message": message,
+            "response": response.text,
         }
 
     def _handle_direct_message(self, target: str, message: str):
