@@ -1,11 +1,16 @@
 pipeline {
-  agent { docker { image 'python:3.7' } }
+  agent {
+    docker {
+      image 'python:3.7'
+      args '-u root'
+    }
+  }
   stages {
     stage('test') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh 'pip install --user -r devrequirements.txt'
-          sh 'pytest'
+          sh 'pipenv install --dev'
+          sh 'pipenv run pytest'
         }
       }
     }
