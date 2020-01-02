@@ -1,5 +1,5 @@
 from unittest import TestCase
-from taosdevopsutils.slack import Slack
+from taosdevopsutils.slack import Slack, Bot
 import slack
 import requests
 
@@ -32,3 +32,16 @@ class TestSlackClass:
         requests_mock.assert_called_with(
             "https://slack/webhook/somehook", json=expected_payload
         )
+
+
+class TestSlackBot:
+    def test_slack_bot_registers_function(self, mocker):
+        slack_mock = mocker.patch.object(slack.WebClient, "auth_test")
+        slack_mock.return_value = {"user_id": "BOTA"}
+        bot = Bot()
+
+        @bot.register("testfunction")
+        def test():
+            return "Hello World"
+
+        assert bot.bot_commands["testfunction"] == test
