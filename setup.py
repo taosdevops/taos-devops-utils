@@ -11,9 +11,11 @@ setup(
     version="1.3.1",
     url="https://github.com/taosdevops/taos-devops-utils",
     install_requires=[
-        "requests~=2.22",
-        "slackclient~=2.2",
-        "Click~=7.0",
+        "google-cloud-secret-manager",
+        "google-cloud-storage",
+        "requests",
+        "slackclient",
+        "Click",
     ],
     entry_points="""
         [console_scripts]
